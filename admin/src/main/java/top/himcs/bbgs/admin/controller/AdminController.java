@@ -1,4 +1,4 @@
-package top.himcs.admin.controller;
+package top.himcs.bbgs.admin.controller;
 
 
 import org.springframework.stereotype.Controller;

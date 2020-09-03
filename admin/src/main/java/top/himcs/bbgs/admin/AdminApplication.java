@@ -1,4 +1,4 @@
-package top.himcs.admin;
+package top.himcs.bbgs.admin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
