@@ -25,13 +25,29 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <bbgs-common.version>0.0.1</bbgs-common.version>
+        <bbgs-mbg.version>0.0.1</bbgs-mbg.version>
         <mysql.version>5.1.49</mysql.version>
         <mybatis.version>3.4.6</mybatis.version>
-        <mybatis-generator.version>1.4.0</mybatis-generator.version>
+        <mybatis-generator.version>1.3.7</mybatis-generator.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <swagger-models.version>1.6.0</swagger-models.version>
+        <swagger-annotations.version>1.6.0</swagger-annotations.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>top.himcs</groupId>
+                <artifactId>common</artifactId>
+                <version>${bbgs-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>top.himcs</groupId>
+                <artifactId>mbg</artifactId>
+                <version>${bbgs-mbg.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -55,6 +71,22 @@
                 <version>${mybatis-generator.version}</version>
             </dependency>
 
+            <!--Swagger-UI API文档生产工具-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

@@ -1,18 +1,24 @@
 package top.himcs.bbgs.admin.controller;
 
 
-import org.springframework.stereotype.Controller;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import top.himcs.bbgs.common.CommonResult;
+import top.himcs.bbgs.mbg.model.SystemAdmin;
 
-@Controller
+@Api(tags = "AdminController", description = "商品品牌管理")
+@RestController
 public class AdminController {
     /**
      * 用户注册
      */
+    @ApiOperation("注册")
     @PostMapping("/register")
-    public void register() {
-
+    public CommonResult<SystemAdmin> register() {
+        SystemAdmin systemAdmin = new SystemAdmin();
+        return CommonResult.success(systemAdmin);
     }
 
     /**
