@@ -11,6 +11,10 @@
 
     <artifactId>mbg</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>top.himcs</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
         <!-- Mysql-->
         <dependency>
             <groupId>mysql</groupId>

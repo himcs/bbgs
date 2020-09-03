@@ -1,4 +1,4 @@
-package top.himcs.bbgs.common;
+package top.himcs.bbgs.common.api;
 
 /**
  * 返回操作码
