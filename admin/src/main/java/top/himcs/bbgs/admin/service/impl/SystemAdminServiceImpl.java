@@ -3,6 +3,7 @@ package top.himcs.bbgs.admin.service.impl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import top.himcs.bbgs.admin.dto.SystemAdminParam;
 import top.himcs.bbgs.admin.service.SystemAdminCacheService;
 import top.himcs.bbgs.admin.service.SystemAdminService;
@@ -67,9 +68,10 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         return token;
     }
 
-    private SystemAdmin getAdminByAccount(String account) {
+    @Override
+    public SystemAdmin getAdminByAccount(String account) {
         SystemAdmin admin = systemAdminCacheService.getAdmin(account);
-        if(admin!=null) return  admin;
+        if (admin != null) return admin;
         SystemAdminExample example = new SystemAdminExample();
         example.createCriteria().andAccountEqualTo(account);
         List<SystemAdmin> systemAdminList = systemAdminMapper.selectByExample(example);
@@ -79,5 +81,14 @@ public class SystemAdminServiceImpl implements SystemAdminService {
             return systemAdmin;
         }
         return null;
+    }
+
+    @Override
+    public SystemAdmin getAdminByToken(String token) {
+        String account = jwtTokenUtil.getSubjectFromToken(token);
+        if (StringUtils.isEmpty(account)) {
+            return null;
+        }
+        return getAdminByAccount(account);
     }
 }

@@ -35,23 +35,23 @@ public class JwtTokenUtil {
         return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
     }
 
-    public String getSubjectFromToken(String token)
-    {
+    public String getSubjectFromToken(String token) {
         Claims claims = getClaimsFromToken(token);
         return claims.getSubject();
     }
 
     /**
      * 验证Token是否有效
+     *
      * @param token
      * @param object
      * @return
      */
-    public boolean validateToken(String token,Object object)
-    {
+    public boolean validateToken(String token, Object object) {
         String account = getSubjectFromToken(token);
         return false;
     }
+
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         String secretString = "mall-admin-secretmall-admin-secret";

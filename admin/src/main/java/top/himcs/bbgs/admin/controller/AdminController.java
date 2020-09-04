@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import top.himcs.bbgs.admin.dto.SystemAdminParam;
+import top.himcs.bbgs.admin.dto.TokenParam;
 import top.himcs.bbgs.admin.service.SystemAdminService;
 import top.himcs.bbgs.common.api.CommonResult;
 import top.himcs.bbgs.mbg.model.SystemAdmin;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static top.himcs.bbgs.common.api.CommonResult.validateFailed;
 
 @Api(tags = "后台用户管理")
 @RestController
@@ -57,5 +56,14 @@ public class AdminController {
     @PostMapping("/logout")
     public void logout() {
 
+    }
+
+    /**
+     * 用户信息
+     */
+    @PostMapping("/info")
+    public CommonResult info(@Validated @RequestBody TokenParam tokenParam) {
+        SystemAdmin systemAdmin = adminService.getAdminByToken(tokenParam.getToken());
+        return CommonResult.success(systemAdmin);
     }
 }

@@ -13,4 +13,8 @@ public interface SystemAdminService {
      * 登陆返回Token
      */
     String login(String account, String pwd);
+
+    SystemAdmin getAdminByAccount(String account);
+
+    SystemAdmin getAdminByToken(String token);
 }
