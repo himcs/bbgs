@@ -13,7 +13,7 @@ import top.himcs.bbgs.admin.service.SystemAdminService;
 import top.himcs.bbgs.common.api.CommonResult;
 import top.himcs.bbgs.mbg.model.SystemAdmin;
 
-@Api(tags = "AdminController", description = "商品品牌管理")
+@Api(tags = "后台用户管理")
 @RestController
 public class AdminController {
 
