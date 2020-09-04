@@ -28,6 +28,7 @@
         <bbgs-common.version>0.0.1</bbgs-common.version>
         <bbgs-mbg.version>0.0.1</bbgs-mbg.version>
         <lombok.version>1.18.12</lombok.version>
+        <hutool-all.version>5.4.1</hutool-all.version>
         <junit.version>4.13</junit.version>
         <mysql.version>5.1.49</mysql.version>
         <mybatis.version>3.4.6</mybatis.version>
@@ -46,6 +47,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool-all.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -67,7 +73,6 @@
                 <artifactId>mbg</artifactId>
                 <version>${bbgs-mbg.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
