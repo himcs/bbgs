@@ -31,6 +31,12 @@ public class GlobalExceptionHandler {
         return CommonResult.validateFailed(message);
     }
 
+    @ResponseBody
+    @ExceptionHandler(value = CommonException.class)
+    public CommonResult handleValidException(CommonException e) {
+        return CommonResult.failed(e.getCode().getCode(), e.getInfo());
+    }
+
     private String getBindingResultError(BindingResult bindingResult) {
         String message = null;
         if (bindingResult.hasErrors()) {
