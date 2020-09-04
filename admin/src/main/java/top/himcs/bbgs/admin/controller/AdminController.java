@@ -13,6 +13,11 @@ import top.himcs.bbgs.admin.service.SystemAdminService;
 import top.himcs.bbgs.common.api.CommonResult;
 import top.himcs.bbgs.mbg.model.SystemAdmin;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static top.himcs.bbgs.common.api.CommonResult.validateFailed;
+
 @Api(tags = "后台用户管理")
 @RestController
 public class AdminController {
@@ -33,9 +38,16 @@ public class AdminController {
     /**
      * 用户登陆
      */
+    @ApiOperation("登陆")
     @PostMapping("/login")
-    public void login() {
-
+    public CommonResult login(@Validated @RequestBody SystemAdminParam systemAdminParam) {
+        String token = adminService.login(systemAdminParam.getAccount(), systemAdminParam.getPwd());
+        if (token == null) {
+            return CommonResult.validateFailed("用户名或密码错误");
+        }
+        Map<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("token", token);
+        return CommonResult.success(tokenMap);
     }
 
 

@@ -8,4 +8,9 @@ public interface SystemAdminService {
      * 注册功能
      */
     SystemAdmin register(SystemAdminParam systemAdminParam);
+
+    /**
+     * 登陆返回Token
+     */
+    String login(String account, String pwd);
 }

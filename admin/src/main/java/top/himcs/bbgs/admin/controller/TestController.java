@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import top.himcs.bbgs.common.api.CommonResult;
+import top.himcs.bbgs.common.service.RedisService;
 import top.himcs.bbgs.mbg.mapper.SystemAdminMapper;
 import top.himcs.bbgs.mbg.model.SystemAdmin;
 import top.himcs.bbgs.mbg.model.SystemAdminExample;
@@ -26,6 +27,8 @@ public class TestController {
 
     @Autowired
     SystemAdminMapper adminMapper;
+    @Autowired
+    RedisService redisService;
 
     @GetMapping("/admin")
     public CommonResult<SystemAdmin> admin() {
@@ -52,5 +55,27 @@ public class TestController {
         List<SystemAdmin> list = adminMapper.selectByExample(systemAdminExample);
         PageInfo<SystemAdmin> pageInfo = new PageInfo<>(list);
         return CommonResult.success(pageInfo);
+    }
+
+    @GetMapping("/redis/set")
+    public void redisSet(@RequestParam(defaultValue = "test") String k, @RequestParam(defaultValue = "") String v) {
+        redisService.set(k, v);
+    }
+
+    @GetMapping("/redis/get")
+    public String redisGet(@RequestParam(defaultValue = "test") String k) {
+        return redisService.get(k).toString();
+    }
+
+    @GetMapping("/redis/setAdmin")
+    public void redisSetAdmin() {
+        List<SystemAdmin> list = adminMapper.selectByExample(null);
+        redisService.set("admin", list);
+    }
+
+    @GetMapping("/redis/getAdmin")
+    public List redisGetAdmin() {
+        List list = (List) redisService.get("admin");
+        return list;
     }
 }
