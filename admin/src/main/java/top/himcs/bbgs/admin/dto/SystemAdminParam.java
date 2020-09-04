@@ -3,6 +3,7 @@ package top.himcs.bbgs.admin.dto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import top.himcs.bbgs.admin.config.TestConstants;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -19,7 +20,7 @@ public class SystemAdminParam {
     @ApiModelProperty(value = "用户头像")
     private String icon;
     @Email
-    @ApiModelProperty(value = "邮箱")
+    @ApiModelProperty(value = "邮箱", example = TestConstants.EMAIL)
     private String email;
     @ApiModelProperty(value = "用户昵称")
     private String nickName;

@@ -26,7 +26,10 @@ public class AdminController {
     @ApiOperation("注册")
     @PostMapping("/register")
     public CommonResult<SystemAdmin> register(@Validated @RequestBody SystemAdminParam systemAdminParam) {
-        SystemAdmin systemAdmin = new SystemAdmin();
+        SystemAdmin systemAdmin = adminService.register(systemAdminParam);
+        if (systemAdmin == null) {
+            return CommonResult.failed();
+        }
         return CommonResult.success(systemAdmin);
     }
 
