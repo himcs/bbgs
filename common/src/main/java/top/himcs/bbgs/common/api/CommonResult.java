@@ -28,7 +28,6 @@ public class CommonResult<T> {
         return new CommonResult<T>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getInfo(), data);
     }
 
-
     public static <T> CommonResult<T> failed(T data) {
         return new CommonResult<T>(ResultCode.FAILED.getCode(), ResultCode.FAILED.getInfo(), data);
     }
@@ -69,6 +68,14 @@ public class CommonResult<T> {
      */
     public static <T> CommonResult<T> validateFailed(String message) {
         return new CommonResult<T>(ResultCode.VALIDATE_FAILED.getCode(), message, null);
+    }
+
+    public static <T> CommonResult<T> forbidden(String message) {
+        return new CommonResult<T>(ResultCode.FORBIDDEN.getCode(), message, null);
+    }
+
+    public static <T> CommonResult<T> unauthorized(String message) {
+        return new CommonResult<T>(ResultCode.UNAUTHORIZED.getCode(), message, null);
     }
 
     public long getCode() {

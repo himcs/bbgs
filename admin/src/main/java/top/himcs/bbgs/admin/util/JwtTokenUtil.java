@@ -1,8 +1,10 @@
 package top.himcs.bbgs.admin.util;
 
+import cn.hutool.core.util.StrUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
@@ -44,12 +46,13 @@ public class JwtTokenUtil {
      * 验证Token是否有效
      *
      * @param token
-     * @param object
+     * @param userDetails
      * @return
      */
-    public boolean validateToken(String token, Object object) {
+    public boolean validateToken(String token, UserDetails userDetails) {
         String account = getSubjectFromToken(token);
-        return false;
+        // @todo 检测userDetails 密码修改时间 与 token 存储的密码时间不一致 则强制 token 失效
+        return StrUtil.equals(account, userDetails.getUsername());
     }
 
     public static void main(String[] args) {
