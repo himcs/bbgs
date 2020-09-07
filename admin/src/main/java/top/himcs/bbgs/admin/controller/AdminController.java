@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.himcs.bbgs.admin.dto.SystemAdminParam;
 import top.himcs.bbgs.admin.dto.TokenParam;
@@ -19,6 +20,7 @@ import java.util.Map;
 
 @Api(tags = "后台用户管理")
 @RestController
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
